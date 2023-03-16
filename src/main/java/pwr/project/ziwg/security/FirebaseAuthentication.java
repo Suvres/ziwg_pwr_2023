@@ -28,7 +28,13 @@ public class FirebaseAuthentication extends AbstractAuthenticationToken {
         return user;
     }
 
+    @Override
+    public boolean isAuthenticated() {
+        return true;
+    }
+
     public FirebaseToken getToken() {
         return user;
     }
+
 }

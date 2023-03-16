@@ -1,21 +1,17 @@
 package pwr.project.ziwg.security;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
-import com.google.firebase.cloud.FirestoreClient;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import pwr.project.ziwg.repository.Firebase;
 import pwr.project.ziwg.repository.UserRepository;
 
 import java.io.IOException;
@@ -28,14 +24,14 @@ public class FirebaseFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-
+        UserRepository userRepository = new UserRepository();
         String authKey = request.getHeader("X-Authorization");
         if (authKey == null) {
            throw new AccessDeniedException("Niepoprawny token");
         }
 
         FirebaseToken firebaseToken = getFirebaseUserByToken(authKey);
-
+        userRepository.createIfNotExist(firebaseToken.getUid());
         Authentication authentication = new FirebaseAuthentication(firebaseToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

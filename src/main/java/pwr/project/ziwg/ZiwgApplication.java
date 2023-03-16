@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class ZiwgApplication {
 
     public static void main(String[] args) {
