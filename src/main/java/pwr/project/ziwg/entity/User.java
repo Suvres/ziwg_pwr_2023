@@ -1,15 +1,25 @@
 package pwr.project.ziwg.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import com.google.firebase.auth.UserRecord;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Builder
+import java.util.UUID;
+
 @Getter
 @Setter
-public class User {
-    private String uid;
+@ToString(callSuper = true)
+@NoArgsConstructor
+public class User extends FirestoreEntity {
     private String name;
-    private String lastName;
     private String email;
+
+    public static User createFromUserRecord(UserRecord userRecord) {
+        User user = new User();
+        user.uid = userRecord.getUid();
+        user.name = userRecord.getDisplayName();
+        user.email = userRecord.getEmail();
+
+        return user;
+    }
 }
