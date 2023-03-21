@@ -4,6 +4,7 @@ import com.google.firebase.auth.UserRecord;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -13,6 +14,10 @@ import java.util.UUID;
 public class User extends FirestoreEntity {
     private String name;
     private String email;
+
+    private List<Day> days;
+    private List<Places> places;
+
 
     public static User createFromUserRecord(UserRecord userRecord) {
         User user = new User();
