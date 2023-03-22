@@ -2,10 +2,8 @@ package pwr.project.ziwg.entity;
 
 import com.google.firebase.auth.UserRecord;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
