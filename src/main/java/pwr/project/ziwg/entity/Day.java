@@ -11,9 +11,9 @@ import java.util.Map;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
 public class Day {
     private String description;
     private LocalDate date;
-    private Map<Places, Emotions> emotions;
+    private Map<String, Emotions> emotions;
 }

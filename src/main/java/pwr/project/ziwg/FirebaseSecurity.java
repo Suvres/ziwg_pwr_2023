@@ -25,6 +25,8 @@ public class FirebaseSecurity {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
+                .cors().and()
                 .addFilterBefore(new FirebaseFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests()
                 .anyRequest()
