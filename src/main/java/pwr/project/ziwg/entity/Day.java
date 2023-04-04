@@ -16,4 +16,13 @@ public class Day {
     private String description;
     private LocalDate date;
     private Map<String, Emotions> emotions;
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null || !this.getClass().equals(obj.getClass())) {
+            return false;
+        }
+
+        return this.date.equals(((Day) obj).date);
+    }
 }

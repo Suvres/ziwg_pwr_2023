@@ -4,6 +4,7 @@ import com.google.firebase.auth.UserRecord;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ public class User extends FirestoreEntity {
     private String email;
 
     private List<Day> days;
-    private List<Places> places;
+    private Set<String> places;
 
 
     public static User createFromUserRecord(UserRecord userRecord) {
