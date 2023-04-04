@@ -39,7 +39,7 @@ public class UserData {
 
     @DeleteMapping("/{uid}/{date}")
     public ResponseEntity<String> deleteDay(@PathVariable String uid, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        // Dodać usuwanie dat z danych usera.
+        userRepository.deleteByDate(date, userRepository.getDocumentByUid(uid));
         return ResponseEntity.ok(String.format("uid: %s, date: %s", uid, date));
     }
 }
