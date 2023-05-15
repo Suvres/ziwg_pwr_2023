@@ -3,6 +3,7 @@ package pwr.project.ziwg.entity;
 import com.google.firebase.auth.UserRecord;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +15,8 @@ public class User extends FirestoreEntity {
     private String name;
     private String email;
 
-    private List<Day> days;
-    private Set<String> places;
+    private List<Day> days = new ArrayList<>();
+    private List<String> places = new ArrayList<>();
 
 
     public static User createFromUserRecord(UserRecord userRecord) {

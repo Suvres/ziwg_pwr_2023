@@ -39,7 +39,7 @@ public class UserRepository extends Firebase<User> {
     public void deleteByDate(LocalDate date, User user){
 
         user.getDays()
-                .stream().filter(day1 -> day1.getDate().equals(date))
+                .stream().filter(day1 -> day1.equalDate(date))
                 .findFirst().ifPresent(user.getDays()::remove);
 
         this.firestore.collection(this.document).document(user.getUid()).set(user);
@@ -50,7 +50,9 @@ public class UserRepository extends Firebase<User> {
     //TODO usuwanie miejsc zamiast add dodać remove w nowej funkcji
     public void addOrEditPlace(String uid, String places){
         User user = this.getDocumentByUid(uid);
-        user.getPlaces().add(places);
+        if(user.getPlaces().stream().noneMatch(i -> i.equalsIgnoreCase(places))) {
+            user.getPlaces().add(places);
+        }
 
         this.firestore.collection(this.document)
                 .document(user.getUid())
