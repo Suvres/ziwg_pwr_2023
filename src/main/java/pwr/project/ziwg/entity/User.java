@@ -12,8 +12,8 @@ import java.util.Set;
 @ToString(callSuper = true)
 @NoArgsConstructor
 public class User extends FirestoreEntity {
-    private String name;
-    private String email;
+    private String name = "";
+    private String email = "";
 
     private List<Day> days = new ArrayList<>();
     private List<String> places = new ArrayList<>();

@@ -16,8 +16,8 @@ import java.util.Map;
 @Getter
 @ToString
 public class Day {
-    private String description;
-    private String date;
+    private String description = "";
+    private String date = "";
     private Map<String, Emotions> emotions = new HashMap<>();
 
     @Override
@@ -34,7 +34,9 @@ public class Day {
     }
 
     public void setDate(String date) {
-        this.date = LocalDate.parse(date).format(DateTimeFormatter.ISO_DATE);
+        String kkk = LocalDate.parse(date).format(DateTimeFormatter.ISO_DATE);
+
+        this.date = kkk;
     }
 
     public boolean equalDate(LocalDate dateToEqual) {
