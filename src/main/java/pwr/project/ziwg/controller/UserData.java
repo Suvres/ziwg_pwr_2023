@@ -5,12 +5,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pwr.project.ziwg.dto.DaysEmotionsCategoryDto;
 import pwr.project.ziwg.dto.PlacesDto;
 import pwr.project.ziwg.entity.Day;
 import pwr.project.ziwg.entity.User;
 import pwr.project.ziwg.repository.UserRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -22,6 +24,11 @@ public class UserData {
     @GetMapping(value = "/{uid}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getDetails(@PathVariable String uid) {
         return ResponseEntity.ok(userRepository.getDocumentByUid(uid));
+    }
+
+    @GetMapping(value = "/{uid}/emotions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<DaysEmotionsCategoryDto>> getUserEmotions(@PathVariable String uid) {
+        return ResponseEntity.ok(userRepository.getEmotionsByUserUid(uid));
     }
 
     @PostMapping(value = "/{uid}/day", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
