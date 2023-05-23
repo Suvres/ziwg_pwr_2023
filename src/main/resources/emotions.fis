@@ -1,0 +1,78 @@
+[System]
+Name='emotions'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=26
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='mom'
+
+[Input1]
+Name='RADOSC'
+Range=[0 16]
+NumMFs=4
+MF1='malo':'trapmf',[1 2 5 9]
+MF2='nasilajace':'trapmf',[6 7 12 16]
+MF3='duze':'trapmf',[12 14 16 16]
+MF4='brak':'trapmf',[0 0 0 2]
+
+[Input2]
+Name='STRES'
+Range=[0 16]
+NumMFs=4
+MF1='brak':'trapmf',[0 0 0 2]
+MF2='malo':'trapmf',[1 2 5 9]
+MF3='nasilajace':'trapmf',[6 7 12 16]
+MF4='duze':'trapmf',[12 14 16 16]
+
+[Input3]
+Name='DEPRESJA'
+Range=[0 16]
+NumMFs=4
+MF1='brak':'trapmf',[0 0 0 2]
+MF2='malo':'trapmf',[1 2 5 9]
+MF3='nasilajace':'trapmf',[6 7 12 16]
+MF4='duze':'trapmf',[12 14 16 16]
+
+[Output1]
+Name='Diagnoza'
+Range=[0 5]
+NumMFs=6
+MF1='BRAK':'trapmf',[0 0 0 1]
+MF2='ZAL_DEP':'trimf',[0 1 2]
+MF3='ZAL_STRES':'trimf',[1 2 3]
+MF4='UW_DEP':'trimf',[2 3 4]
+MF5='UW_STRES':'trimf',[3 4 5]
+MF6='UW_STR_DEP':'trapmf',[4 5 5 5]
+
+[Rules]
+4 1 1, 1 (1) : 1
+1 1 1, 1 (1) : 1
+2 1 1, 1 (1) : 1
+3 1 1, 1 (1) : 1
+3 2 2, 1 (1) : 1
+3 4 -4, 5 (1) : 1
+-3 4 -4, 5 (1) : 1
+-3 3 2, 3 (1) : 1
+-3 3 1, 3 (1) : 1
+3 -4 4, 4 (1) : 1
+-3 -4 4, 4 (1) : 1
+-3 2 3, 2 (1) : 1
+-3 1 3, 2 (1) : 1
+2 2 2, 1 (1) : 1
+3 4 4, 6 (1) : 1
+-3 4 4, 6 (1) : 1
+3 3 3, 6 (1) : 1
+-3 3 3, 6 (1) : 1
+-3 3 3, 6 (1) : 1
+1 2 2, 1 (1) : 1
+3 2 1, 1 (1) : 1
+3 1 2, 1 (1) : 1
+2 1 2, 1 (1) : 1
+2 2 1, 1 (1) : 1
+1 2 1, 1 (1) : 1
+1 1 2, 1 (1) : 1
