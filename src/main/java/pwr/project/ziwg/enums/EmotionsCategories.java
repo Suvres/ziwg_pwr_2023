@@ -7,8 +7,10 @@ import lombok.RequiredArgsConstructor;
  *
  * Każda emocja będzie miała swój wykres podzielony na 4
  * [0, 15], z czego pierwszy zbiór zacznie się od 1
- * będzie, mało emocji, średnio emocji, dużo emocji, bardzo dużo emocji aż do 15 dnia
- *
+ * zbiory podzielimy na słabe emocje, nasilacjące się, duże emocje
+ * zbiory dla fis
+ *  małe: 1 -> 9 trapez
+ *  nasilające się: 5 -
  * a następnie możemy sprawdzać w regułach, czy szczęścia było więcej niż innych emocji
  */
 @Getter
