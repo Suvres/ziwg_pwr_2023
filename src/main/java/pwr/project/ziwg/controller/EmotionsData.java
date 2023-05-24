@@ -13,6 +13,7 @@ import pwr.project.ziwg.repository.UserRepository;
 
 import java.time.LocalDate;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/emotions")
 @RequiredArgsConstructor
